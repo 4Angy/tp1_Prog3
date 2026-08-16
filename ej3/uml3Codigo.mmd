@@ -1,0 +1,29 @@
+classDiagram
+direction TB
+    class Pais {
+	    +nombre: string
+    }
+
+    class Provincia {
+	    +habitantes: int
+        +mayoriaEnDeficit() boolean
+    }
+
+    class Ciudad {
+	    +habitantes: int
+        +estaEnDeficit() boolean
+    }
+
+    class MontoRecaudado {
+	    -imp1 : float
+	    -imp2 : float
+	    -imp3 : float
+	    -imp4 : float
+	    -imp5 : float
+	    -costosDeMantenimiento : float
+         +estaEnDeficit() boolean
+    }
+
+    Pais "1" --* "*" Provincia
+    Provincia "1" --* "*" Ciudad
+    Ciudad --* MontoRecaudado
