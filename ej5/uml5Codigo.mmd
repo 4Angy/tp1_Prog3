@@ -1,0 +1,30 @@
+classDiagram
+direction TB
+    class Ciudad {
+	    +nombre: string
+    }
+
+    class Restaurante {
+    }
+
+    class PlatoSucursal {
+    }
+
+    class Persona {
+	    +nombre:string
+    }
+
+    class Plato {
+	    +nombre:String
+    }
+
+    class Sucursal {
+	    +nombre:string
+    }
+
+    Ciudad "1" --o "*" Restaurante
+    Restaurante "1" --> "1..*" Sucursal
+    Plato "1" --> "0..20" PlatoSucursal
+    Persona "0..*" --> "*1..*" Restaurante : frecuenta
+    Persona "0..*" --> "0..*" PlatoSucursal : Le gusta
+    Sucursal "1" --> "1..*" PlatoSucursal
