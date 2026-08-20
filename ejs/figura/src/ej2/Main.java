@@ -3,10 +3,10 @@ package Ejercicio2;
 public class Main {
     public static void main(String[] args) {
         // Crear continente
-        Continente americaSur = new Continente("América del Sur");
+        Ejercicio2.Continente americaSur = new Ejercicio2.Continente("América del Sur");
 
         // Crear países
-        Pais argentina = new Pais("Argentina", americaSur);
+        Pais argentina = new Ejercicio2.Pais("Argentina", americaSur);
         americaSur.agregarPais(argentina);
 
         Pais chile = new Pais("Chile", americaSur);
