@@ -1,0 +1,51 @@
+classDiagram
+direction TB
+
+   class Figura {
+   }
+
+   class Poligono {
+   }
+
+   class Triangulo {
+   }
+
+   class Cuadrilatero {
+   }
+
+   class Rectangulo {
+   }
+
+   class Cuadrado {
+   }
+
+   class Elipse {
+   }
+
+   class Circulo {
+   }
+
+   class Lado {
+   }
+
+   class Punto {
+    x : float
+    y : float
+   }
+
+   Figura <|-- Poligono
+   Figura <|-- Elipse
+
+   Poligono <|-- Triangulo
+   Poligono <|-- Cuadrilatero
+
+   Cuadrilatero <|-- Rectangulo
+   Rectangulo <|-- Cuadrado
+
+   Elipse <|-- Circulo
+
+   Figura "1" *-- "0..*" Figura : compuesta de
+
+   Poligono "1" *-- "3..*" Lado : tiene
+
+   Lado "1" *-- "2" Punto : extremos
