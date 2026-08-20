@@ -1,0 +1,54 @@
+classDiagram
+direction TB
+
+   class representanteVenta{
+    nombre : string
+    direccion : string
+    telefono : string
+    fechaNacimiento : date
+    cuitCuil : string
+    fechaIncorporacion : date
+   }
+
+   class vendedor{
+   }
+
+   class lider{
+    fechaPromocion : date
+   }
+
+   class cliente{
+    nombre : string
+    direccion : string
+    telefono : string
+    fechaNacimiento : date
+    fechaIngreso : date
+   }
+
+   class producto{
+    nombre : string
+    precioVenta : float
+   }
+
+   class ticket{
+    fecha : date
+    precio : float
+   }
+
+   class reunionGeneral{
+    fecha : date
+    fechaProximaReunion : date
+   }
+
+   representanteVenta <|-- vendedor
+   representanteVenta <|-- lider
+
+   lider "1" -- "*" vendedor : coordina
+
+   representanteVenta "1" -- "*" cliente : cartera
+
+   representanteVenta "1" -- "*" ticket : compra
+
+   ticket "*" --> "1" producto : corresponde a
+
+   ticket "0..1" --> "1" cliente : venta final a

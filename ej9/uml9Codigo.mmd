@@ -1,0 +1,71 @@
+
+classDiagram
+direction TB
+
+   class museo {
+   }
+
+   class exposicion{
+    nombre : string
+    fechaInicio : date
+    fechaFin : date
+   }
+
+   class coleccionExterna{
+    nombre : string
+    tipo : string
+    descripcion : string
+    direccion : string
+    telefono : string
+    contacto : string
+   }
+
+   class objetoArte{
+    idArte : int
+    titulo : string
+    descripcion : string
+    anioCreacion : date
+    pais : string
+    cultura : string
+    epoca : string
+    estilo : string
+   }
+
+   class pintura {
+    tipoPintura : string
+    soporte : string
+   }
+
+   class escultura{
+    material : string
+    altura : float
+    peso : float
+   }
+
+   class otro {
+   }
+
+   class permanente{
+    fechaAdquisicion : date
+    coste : float
+    enExposicion : boolean
+   }
+
+   class enPrestamo{
+    fechaRecepcion : date
+    fechaDevolucion : date
+   }
+
+   museo "1" *-- "*" objetoArte : contiene
+   museo "1" *-- "*" exposicion : organiza
+
+   objetoArte <|-- pintura
+   objetoArte <|-- escultura
+   objetoArte <|-- otro
+
+   objetoArte <|-- permanente
+   objetoArte <|-- enPrestamo
+
+   enPrestamo "*" --> "1" coleccionExterna : pertenece a
+
+   exposicion "*" -- "*" objetoArte : exhibe

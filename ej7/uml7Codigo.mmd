@@ -1,0 +1,62 @@
+classDiagram
+direction TB
+    class Campeonato {
+    }
+
+    class Prueba {
+	    -nombre:string
+	    -tipo:string
+	    -fechaPrevista:string
+	    -ganador:string
+	    -tiempoGanador:float
+    }
+
+    class Grupo {
+	    -codigo:int
+	    -entrenador:string
+    }
+
+    class Participante {
+	    -dni:int
+	    -nombre:string
+	    -fechaNacimiento:date
+	    -edad:int
+    }
+
+    class Estacion {
+	    +nombre:string
+	    +contactos:string
+	    +direccion:string
+	    +telefono:string
+	    +kilometros:string
+	    +nroPistas:string
+    }
+
+    class Federacion {
+	    -nombre:string
+	    -nroFederados:int
+    }
+
+    class Registro {
+	    -codigo:string
+	    -fechas:string
+	    -tiempo:float
+	    -posicion:int
+    }
+
+    class Pista {
+	    -numero:int
+	    -longitud:float
+	    -dificultad:string
+    }
+
+    Campeonato "1" --> "1..*" Prueba
+    Prueba "1" --> "1" Estacion
+    Grupo "1" --> "1..*" Participante
+    Participante "0..*" --> "1" Federacion
+    Federacion "1..*" --> "1..*" Estacion
+    Estacion "1" --> "1..*" Pista
+    Pista "0..*" --> "0..*" Pista : se compone
+    Registro "0..*" --> "1" Prueba
+    Registro "0..1" --> "0..1" Participante
+    Registro "0..1" --> "0..1" Grupo
